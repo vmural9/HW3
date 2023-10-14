@@ -1,0 +1,122 @@
+---
+import { app } from "../firebase/server";
+import { getAuth } from "firebase-admin/auth";
+import Layout from "../layouts/Layout.astro";
+
+/* Check if the user is authenticated */
+const auth = getAuth(app);
+if (Astro.cookies.has("session")) {
+  const sessionCookie = Astro.cookies.get("session")!.value;
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  if (decodedCookie) {
+    return Astro.redirect("/dashboard");
+  }
+}
+---
+
+<Layout title="Sign in">
+  <body>
+    <div class="container">
+      <div class="container mt-5 login-container">
+        <h2>Welcome to CS484!</h2>
+        <form id="loginForm" action="/api/auth/signin" method="post">
+          <div class="form-group">
+            <label for="emailId">Email ID:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="emailId"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button id="loginButton" type="submit" class="btn btn-primary">
+            Login
+          </button>
+          <button type="button" class="btn btn-secondary" id="clearButton">
+            Clear
+          </button>
+        </form>
+        <div class="hidden-info mt-3">
+          <p id="msg-for-failure"></p>
+        </div>
+      </div>
+      <div class="container mt-3 new-user-container">
+        <p>Not yet signed up? Click here to create your account.</p>
+        <a href="/register" class="btn btn-primary">Create Account</a>
+      </div>
+    </div>
+  </body>
+</Layout>
+
+<script>
+  import {
+    getAuth,
+    inMemoryPersistence,
+    signInWithEmailAndPassword,
+    connectAuthEmulator,
+  } from "firebase/auth";
+  import { app } from "../firebase/client";
+
+  const auth = getAuth(app);
+  if (import.meta.env.PUBLIC_EMULATOR) {
+    console.log("Client connecting to Emulator!");
+    connectAuthEmulator(auth, "http://127.0.0.1:9099");
+  }
+  // This will prevent the browser from storing session data
+  auth.setPersistence(inMemoryPersistence);
+
+  const form = document.querySelector("form") as HTMLFormElement;
+  const clearButton = document.getElementById("clearButton");
+
+  clearButton!.addEventListener("click", () => {
+    form.reset();
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const email = formData.get("email")?.toString();
+    const password = formData.get("password")?.toString();
+
+    console.log(email);
+    if (!email || !password) {
+      return;
+    }
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const idToken = await userCredential.user.getIdToken();
+      console.log("ID TOKEN", idToken);
+      const response = await fetch("/api/auth/signin", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      if (response.redirected) {
+        window.location.assign(response.url);
+      } else {
+        const errorMessage = document.getElementById("msg-for-failure");
+        errorMessage!.innerText = "Login failed. Please check Server Log";
+      }
+    } catch (error) {
+      const errorMessage = document.getElementById("msg-for-failure");
+      errorMessage!.innerText = "Login failed. Please check Server Log";
+    }
+  });
+</script>

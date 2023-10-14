@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,500;1,700;1,800&display=swap");
+
+* {
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #343541;
+  /* display: flex; */
+}
+
+input {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  font-size: 20px;
+  padding: 12px 15px;
+  border-radius: 5px;
+  box-shadow:
+    rgba(255, 255, 255, 0.05) 0 54px 55px,
+    rgba(255, 255, 255, 0.05) 0 -12px 30px,
+    rgba(255, 255, 255, 0.05) 0 4px 6px,
+    rgba(255, 255, 255, 0.05) 0 12px 3px;
+}
+
+input:focus {
+  outline: none;
+}
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-container #submit {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+button {
+  border: solid 0.5px rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Use full width of the container */
+  max-width: 450px; /* Adjust as needed */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center the contents horizontally */
+}
+
+.new-user-container {
+  align-items: center;
+}
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hidden-info {
+  text-align: center;
+  color: red;
+}
+
+#loginForm .btn {
+  margin: 10px auto; /* Adjust the margin as needed */
+}
+#clearButton {
+  margin-top: 10px; /* Add spacing between the buttons and the password field */
+}
+
+.logout {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: #c0392b;
+}
+
+.create-user {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 30px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hidden-info {
+  text-align: center;
+  color: red;
+  margin-top: 15px;
+  display: block;
+}
+
+#msg-for-failure {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: red;
+}
+
+select {
+  color: #3e3434;
+}
+
+select option {
+  color: #3e3434;
+}

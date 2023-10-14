@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Register">
+  <body>
+    <div class="create-user">
+      <h1 class="form-title">Create a New User</h1>
+      <form action="/api/auth/register" method="post">
+        <div class="form-outline mb-4">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter First Name"
+          />
+        </div>
+        <div class="form-outline mb-4">
+          <label for="email">Email Id</label>
+          <input
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email ID"
+          />
+        </div>
+        <div class="form-outline mb-4">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+          />
+        </div>
+        <button
+          id="createUserButton"
+          type="submit"
+          class="btn btn-primary"
+          style="margin-top: 10px"
+        >
+          Submit
+        </button>
+        <a href="/signin" class="btn btn-primary">Continue to Login</a>
+        <div class="hidden-info">
+          <p id="msg-for-failure-sucess"></p>
+        </div>
+      </form>
+    </div>
+  </body>
+</Layout>

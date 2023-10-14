@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,500;1,700;1,800&display=swap");
+
+* {
+  /* color: #fff; */
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* display: flex; */
+}
+
+.app {
+  background-color: #343541;
+  display: flex;
+  color: #fff;
+}
+
+.app button {
+  color: #fff;
+  border: solid 0.5px rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.side-bar {
+  background-color: #202123;
+  width: 350px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+nav {
+  border-top: solid 0.5px rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  margin: 10px;
+}
+
+.history {
+  padding: 10px;
+  margin: 10px;
+  height: 100%;
+}
+
+.history li {
+  list-style-type: none;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.info {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  padding: 10px;
+}
+
+.bottom-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+}
+
+.app input {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  width: 100%;
+  font-size: 20px;
+  padding: 12px 15px;
+  border-radius: 5px;
+  box-shadow:
+    rgba(255, 255, 255, 0.05) 0 54px 55px,
+    rgba(255, 255, 255, 0.05) 0 -12px 30px,
+    rgba(255, 255, 255, 0.05) 0 4px 6px,
+    rgba(255, 255, 255, 0.05) 0 12px 3px;
+}
+
+app input:focus {
+  outline: none;
+}
+
+.app #submit {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.feed {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding: 0;
+}
+
+.feed li {
+  display: flex;
+  background-color: #444654;
+  max-width: 100%;
+  width: 100%;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.feed p {
+  color: rgba(255, 255, 255 0.8);
+  font-size: 14px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.feed p.role {
+  min-width: 100px;
+}
+
+.feedback {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  margin-left: 10px; /* Add some space between the paragraph and button */
+}
+
+.feedback:hover {
+  background-color: #c0392b;
+}
+.form-contain {
+  margin: auto;
+  width: 50%;
+}

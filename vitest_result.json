@@ -1,0 +1,92 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 1,
+  "numFailedTestSuites": 1,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 6,
+  "numPassedTests": 5,
+  "numFailedTests": 1,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1695836070564,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (3 pts) 1. Create a new prompt, and it should appear in the history.",
+          "status": "passed",
+          "title": "(3 pts) 1. Create a new prompt, and it should appear in the history.",
+          "duration": 1725,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (3 pts) 2. Create a new prompt, and it should appear in the history. Creation of a new prompt under the same parent should not create a new entry in the history section.",
+          "status": "passed",
+          "title": "(3 pts) 2. Create a new prompt, and it should appear in the history. Creation of a new prompt under the same parent should not create a new entry in the history section.",
+          "duration": 1604,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (3 pts) 3. Checking chats under the same parent in the viewing pane",
+          "status": "passed",
+          "title": "(3 pts) 3. Checking chats under the same parent in the viewing pane",
+          "duration": 9,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (3 pts) 4. Clicking the New Chat button and creating a new prompt should add an entry in history",
+          "status": "passed",
+          "title": "(3 pts) 4. Clicking the New Chat button and creating a new prompt should add an entry in history",
+          "duration": 1587,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (7 pts) 5. Reload the page and check history and chats",
+          "status": "passed",
+          "title": "(7 pts) 5. Reload the page and check history and chats",
+          "duration": 1619,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "Check the functionality of Serverless GPT-484"
+          ],
+          "fullName": " Check the functionality of Serverless GPT-484 (3 pts) 6. Logout and create a new Email account and logIn",
+          "status": "failed",
+          "title": "(3 pts) 6. Logout and create a new Email account and logIn",
+          "duration": 5003,
+          "failureMessages": [
+            "Test timed out in 5000ms.\nIf this is a long-running test, pass a timeout value as the last argument or configure it globally with \"testTimeout\"."
+          ]
+        }
+      ],
+      "startTime": 1695836072454,
+      "endTime": 1695836084001,
+      "status": "failed",
+      "message": "The uid must be a non-empty string with at most 128 characters.",
+      "name": "/home/saga/Documents/MSCS/TA_Fall2023/HW3/Astro-484/Serverless-484/__tests__/AddPrompts.test.js"
+    }
+  ]
+}
