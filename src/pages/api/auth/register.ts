@@ -5,13 +5,6 @@ import { app } from "../../../firebase/server";
 export const POST: APIRoute = async ({ request }) => {
   const auth = getAuth(app);
 
-  /* TODO: Get form data */
-  // From the form data, get the email, password and name.
-  // For any missing field send 400 response.
-  // Create a user using Auth service.
-  // Takes in email, password, displayName
-  // If successful, redirect to /signin
-
   /* Create user */
   const rawBody = await request.json();
   const formData = new URLSearchParams(rawBody);
