@@ -33,6 +33,7 @@ export const GET: APIRoute = async ({ params }) => {
         });
       }
     });
+    console.log(allChats);
 
     // Return the chat messages as a response
     return new Response(JSON.stringify(allChats), {

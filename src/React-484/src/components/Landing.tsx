@@ -1,7 +1,10 @@
 import { type SetStateAction, useEffect, useState } from "react";
-import type { Chat, ChatMessage } from "../utils/types";
+import type { ChatMessage, Chat } from "../utils/types";
+interface LandingProps {
+  email: string;
+}
 
-function Landing() {
+function Landing({ email }: LandingProps) {
   const [value, setValue] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [previousChats, setPreviousChats] = useState<Array<ChatMessage>>([]);
@@ -20,38 +23,27 @@ function Landing() {
   useEffect(() => {
     async function getChats() {
       try {
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
-        // WRITE
-        // .....YOUR
-        // ..........CODE
-        // ................HERE
+        email = "vmural9@uic.edu";
+        const response = await fetch(
+          "../../pages/api/chat/getChats?email=${email}"
+        );
+        const chats: Chat[] = await response.json();
+
+        if (chats && chats.length > 0) {
+          // Format the chat messages into a flat array of ChatMessage objects
+          const formattedMessages: ChatMessage[] = chats.flatMap((chat) =>
+            chat.messages.flatMap((message) => [
+              { title: chat.title, role: "User:", content: message.USER },
+              { title: chat.title, role: "BOT:", content: message.BOT },
+            ])
+          );
+
+          // Update the setPreviousChats state with the formatted messages
+          setPreviousChats(formattedMessages);
+
+          // Set the current chat title to the title of the first chat
+          setCurrentTitle(chats[0].title);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -104,30 +96,29 @@ function Landing() {
       // If response.status === 200, set current input value to ""
       // Else set current input value to "XXXXXXXXXX ERROR OCCURRED XXXXXXXXX"
 
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
-      // WRITE
-      // .....YOUR
-      // ..........CODE
-      // ................HERE
+      const requestBody = {
+        email: email, // Assuming email is available in the component's scope
+        title: title,
+        message: {
+          USER: value,
+          BOT: randomSentence,
+        },
+      };
+
+      // Make a POST request to add the new chat
+      const response = await fetch("/../../../pages/api/chat/insertChats", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (response.status === 200) {
+        setValue(""); // Clear the input value on successful response
+      } else {
+        setValue("XXXXXXXXXX ERROR OCCURRED XXXXXXXXX");
+      }
     } catch (error) {
       console.error(error);
     }
