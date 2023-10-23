@@ -9,26 +9,6 @@ export const POST: APIRoute = async () => {
     // .....YOUR
     // ..........CODE
     // ................HERE
-    // WRITE
-    // .....YOUR
-    // ..........CODE
-    // ................HERE
-    // WRITE
-    // .....YOUR
-    // ..........CODE
-    // ................HERE
-    // WRITE
-    // .....YOUR
-    // ..........CODE
-    // ................HERE
-    // WRITE
-    // .....YOUR
-    // ..........CODE
-    // ................HERE
-    // WRITE
-    // .....YOUR
-    // ..........CODE
-    // ................HERE
   } catch (error) {
     console.log(error);
     return new Response("Something went wrong", {

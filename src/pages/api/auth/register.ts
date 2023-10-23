@@ -11,11 +11,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const password = formData.get("password");
   const displayName = formData.get("name");
 
-  console.log(email);
-  console.log(password);
-  console.log(displayName);
-  console.log(typeof email);
-
   // Check for missing fields and return a 400 response if any are missing
   if (!email || !password || !displayName) {
     return new Response("Missing registration fields", {
