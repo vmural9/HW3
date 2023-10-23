@@ -2,12 +2,11 @@ import type { APIRoute } from "astro";
 import { getAuth } from "firebase-admin/auth";
 import { app } from "../../../firebase/server";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, redirect }) => {
   const auth = getAuth(app);
-
+  console.log("Inside Register");
   /* Create user */
-  const rawBody = await request.json();
-  const formData = new URLSearchParams(rawBody);
+  const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
   const displayName = formData.get("name");
@@ -25,17 +24,12 @@ export const POST: APIRoute = async ({ request }) => {
       password: password,
       displayName: displayName,
     });
-
+    console.log("Creating User.");
     // If successful, you can redirect to /signin or return a success message
     // For the purpose of this example, we'll return a success message.
     // In a real-world application, you'd typically redirect the user.
-    return new Response("User registered successfully", {
-      status: 200,
-      headers: {
-        // This is a pseudo-header for redirection. Actual implementation might vary based on your setup.
-        Location: "/signin",
-      },
-    });
+
+    return redirect("/signin");
   } catch (error) {
     console.log(error);
     return new Response(`Something went wrong`, {
